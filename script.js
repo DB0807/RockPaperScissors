@@ -9,29 +9,42 @@ function getComputerChoice () {
     else return "Scissors";
 }
 
-function playRound (playerSelection, getComputerChoice) { //should getComputerChoice be something else and be assigned to func in code block?
+function playRound (playerSelection, computerSelection) { //should getComputerChoice be something else and be assigned to func in code block?
+
     const lowCaseSelection = playerSelection.toLowerCase();
-    playerSelection = playerSelection.charAt(0).toUpperCase() + lowCaseSelection.slice(1);
-    if (playerSelection == getComputerChoice) {
+    playerSelection = playerSelection.charAt(0).toUpperCase() + lowCaseSelection.slice(1); // should put in string?
+
+    if (playerSelection == computerSelection) {
         return "Draw";
     }
-    else if (playerSelection == "Rock" && getComputerChoice == "Scissors"){
+    else if (playerSelection == "Rock" && computerSelection == "Scissors"){
         return "You Win, +1 Point!";
     }
-    else if (playerSelection == "Rock" && getComputerChoice == "Paper"){
+    else if (playerSelection == "Rock" && computerSelection == "Paper"){
     return "You Lose, +1 point for the computer!";
     }
-    else if (playerSelection == "Paper" && getComputerChoice == "Rock"){
+    else if (playerSelection == "Paper" && computerSelection == "Rock"){
         return "You Win, +1 Point!";
     }
-    else if (playerSelection == "Paper" && getComputerChoice == "Scissors"){
+    else if (playerSelection == "Paper" && computerSelection == "Scissors"){
         return "You Lose, +1 point for the computer!";
     }
-    else if (playerSelection == "Scissors" && getComputerChoice == "Paper"){
+    else if (playerSelection == "Scissors" && computerSelection == "Paper"){
         return "You Win, +1 Point!";
     }
-    else if (playerSelection == "Scissors" && getComputerChoice == "Rock"){
+    else if (playerSelection == "Scissors" && computerSelection == "Rock"){
         return "You Lose, +1 point for the computer!";
     }
     else return "Error";
+}
+
+function game () {
+    const playerSelection = prompt ("Rock, Paper, Scissors?"); 
+    const computerSelection = getComputerChoice();
+    let result = playRound(playerSelection, computerSelection);
+    if (result == "You Win, +1 Point!") {
+        console.log("yay");
+    }
+    else console.log("nay");
+
 }
