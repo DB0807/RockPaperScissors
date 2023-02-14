@@ -42,9 +42,18 @@ function game () {
     const playerSelection = prompt ("Rock, Paper, Scissors?"); 
     const computerSelection = getComputerChoice();
     let result = playRound(playerSelection, computerSelection);
-    if (result == "You Win, +1 Point!") {
-        console.log("yay");
+    for (let round = 0; round < 5; round++) {
+        let playerScore = 0;
+        let ComputerScore = 0;
+        // add draw to if
+        if (result == "You Win, +1 Point!") {
+            // console.log(result + " " + "Player Score:" + playerScore + "Computer Score:" + ComputerScore);
+            return "yay";
+        }
+        else if (result == "You Lose, +1 point for the computer!") {
+            return
+        }
+        else return "error";
     }
-    else console.log("nay");
-
+    // research on adding +1 to score and look to display round number - last thing will be to add game winner 
 }
