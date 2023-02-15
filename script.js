@@ -1,3 +1,8 @@
+let round;
+let playerScore = 0;
+let computerScore = 0;
+
+//function to obtain computers selection for the game
 function getComputerChoice () {
     let choice = Math.floor (Math.random() * 3);
     if (choice == 0) {
@@ -9,51 +14,62 @@ function getComputerChoice () {
     else return "Scissors";
 }
 
-function playRound (playerSelection, computerSelection) { //should getComputerChoice be something else and be assigned to func in code block?
-
+//function to run outcomes
+function playRound (playerSelection, computerSelection) { 
     const lowCaseSelection = playerSelection.toLowerCase();
-    playerSelection = playerSelection.charAt(0).toUpperCase() + lowCaseSelection.slice(1); // should put in string?
+    playerSelection = playerSelection.charAt(0).toUpperCase() + lowCaseSelection.slice(1);
 
     if (playerSelection == computerSelection) {
-        return "Draw";
+        return "draw";
     }
     else if (playerSelection == "Rock" && computerSelection == "Scissors"){
-        return "You Win, +1 Point!";
+        return "player wins";
     }
     else if (playerSelection == "Rock" && computerSelection == "Paper"){
-    return "You Lose, +1 point for the computer!";
+    return "computer wins";
     }
     else if (playerSelection == "Paper" && computerSelection == "Rock"){
-        return "You Win, +1 Point!";
+        return "player wins";
     }
     else if (playerSelection == "Paper" && computerSelection == "Scissors"){
-        return "You Lose, +1 point for the computer!";
+        return "computer wins";
     }
     else if (playerSelection == "Scissors" && computerSelection == "Paper"){
-        return "You Win, +1 Point!";
+        return "player wins!";
     }
     else if (playerSelection == "Scissors" && computerSelection == "Rock"){
-        return "You Lose, +1 point for the computer!";
+        return "computer wins";
     }
     else return "Error";
 }
 
+//function to play the rounds and give final result
 function game () {
-    const playerSelection = prompt ("Rock, Paper, Scissors?"); 
-    const computerSelection = getComputerChoice();
-    let result = playRound(playerSelection, computerSelection);
-    for (let round = 0; round < 5; round++) {
-        let playerScore = 0;
-        let ComputerScore = 0;
-        // add draw to if
-        if (result == "You Win, +1 Point!") {
-            // console.log(result + " " + "Player Score:" + playerScore + "Computer Score:" + ComputerScore);
-            return "yay";
+    for (let i = 0; i < 5; i++) {
+        const computerSelection = getComputerChoice();
+        const playerSelection = prompt ("Rock, Paper, Scissors?");
+        let result = playRound(playerSelection, computerSelection);  
+        if (result == "draw"){
+            console.log("Tie!");
         }
-        else if (result == "You Lose, +1 point for the computer!") {
-            return
+        else if (result == "player wins") {
+            playerScore += 1;
+
+            console.log(`Scores - Player: ${playerScore}, Computer: ${computerScore}`);
         }
-        else return "error";
+        else if (result == "computer wins") {
+            computerScore += 1;
+            console.log(`Scores - Player: ${playerScore}, Computer: ${computerScore}`);
+        }
+        else console.log("error");
     }
-    // research on adding +1 to score and look to display round number - last thing will be to add game winner 
+
+    if (playerScore > computerScore) {
+        //add console.log() final score
+        return "You beat the computer!";
+    }
+    else if (playerScore < computerScore) {
+        return "Unluck, you lost!";
+    }
+    else return "It's a Tie!";
 }
