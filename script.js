@@ -1,4 +1,3 @@
-let round;
 let playerScore = 0;
 let computerScore = 0;
 
@@ -18,7 +17,7 @@ function getComputerChoice () {
 function playRound (playerSelection, computerSelection) { 
     const lowCaseSelection = playerSelection.toLowerCase();
     playerSelection = playerSelection.charAt(0).toUpperCase() + lowCaseSelection.slice(1);
-
+    //change below to switch statement?
     if (playerSelection == computerSelection) {
         return "draw";
     }
@@ -63,7 +62,10 @@ function game () {
         }
         else console.log("error");
     }
+    return finalScore();
+}
 
+function finalScore (playerScore, computerScore) {
     if (playerScore > computerScore) {
         //add console.log() final score
         return "You beat the computer!";
