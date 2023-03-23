@@ -41,37 +41,3 @@ function playRound (playerSelection, computerSelection) {
     }
     else return "Error";
 }
-
-//function to play the rounds and give final result
-function game () {
-    for (let i = 0; i < 5; i++) {
-        const computerSelection = getComputerChoice();
-        const playerSelection = prompt ("Rock, Paper, Scissors?");
-        let result = playRound(playerSelection, computerSelection);  
-        if (result == "draw"){
-            console.log("Tie!");
-        }
-        else if (result == "player wins") {
-            playerScore += 1;
-
-            console.log(`Scores - Player: ${playerScore}, Computer: ${computerScore}`);
-        }
-        else if (result == "computer wins") {
-            computerScore += 1;
-            console.log(`Scores - Player: ${playerScore}, Computer: ${computerScore}`);
-        }
-        else console.log("error");
-    }
-    return finalScore();
-}
-
-function finalScore (playerScore, computerScore) {
-    if (playerScore > computerScore) {
-        //add console.log() final score
-        return "You beat the computer!";
-    }
-    else if (playerScore < computerScore) {
-        return "Unluck, you lost!";
-    }
-    else return "It's a Tie!";
-}
