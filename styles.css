@@ -1,15 +1,76 @@
 body {
-    background-color: #ede8ed;
+    background-color: #073B4C;
     margin: 0;
     display: flex;
     flex-direction: column;
-    text-align: center;
+    align-items: center;
 }
 
 h1 {
-    color: #ce2d4f;
-    margin: 0;
-    padding: 12px;
-    width: 350px;
-    margin: auto;
+    color: aliceblue;
+    padding-top: 12px;
+    margin: 0px;
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 60px;
+    font-weight: 700;
 }
+
+.titleR {
+    color: #ff006e;
+}
+
+.titleP {
+    color: #06d6a0;
+}
+
+.titleS {
+    color: #8338ec;
+}
+
+.container {
+    margin-top: 30px;
+    width: 600px;
+    height: 200px;
+    text-align: center;
+}
+
+.makeChoice {
+    display: flex;
+    flex-direction: column;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 30px;
+    color: aliceblue;
+}
+
+.playerOptions{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+button {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    width: 120px;
+    height: 50px;
+    border-radius: 4px;
+    color: aliceblue;
+}
+
+.rock{
+background-color: #ff006e;
+border: 2px solid #800037;
+}
+
+.paper {
+background-color: #06d6a0;
+border: 2px solid #048966;
+}
+
+.scissors {
+background-color: #8338ec;
+border: 2px solid #480E98;
+}
+
