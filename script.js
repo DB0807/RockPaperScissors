@@ -13,11 +13,27 @@ function getComputerChoice () {
     else return "Scissors";
 }
 
-//function to run outcomes
-function playRound (playerSelection, computerSelection) { 
-    const lowCaseSelection = playerSelection.toLowerCase();
-    playerSelection = playerSelection.charAt(0).toUpperCase() + lowCaseSelection.slice(1);
+const rock = document.querySelector('.rock');
+rock.textContent = "Rock";
+rock.addEventListener ('click', () => {
+    console.log(playRound("Rock", getComputerChoice()));
+});
 
+const paper = document.querySelector('.paper');
+paper.textContent = "Paper";
+paper.addEventListener ('click', () => {
+    console.log(playRound("Paper", getComputerChoice()));
+});
+
+const scissors = document.querySelector('.scissors');
+scissors.textContent = "Scissors";
+scissors.addEventListener ('click', () => {
+    console.log(playRound("Scissors", getComputerChoice()));
+});
+
+//function to run outcomes
+function playRound (playerSelection, getComputerChoice) { 
+    const computerSelection = getComputerChoice;
     switch (true) {
         case (playerSelection == computerSelection):
             return "draw";
