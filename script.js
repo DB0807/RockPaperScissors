@@ -17,27 +17,23 @@ function getComputerChoice () {
 function playRound (playerSelection, computerSelection) { 
     const lowCaseSelection = playerSelection.toLowerCase();
     playerSelection = playerSelection.charAt(0).toUpperCase() + lowCaseSelection.slice(1);
-    //change below to switch statement?
-    if (playerSelection == computerSelection) {
-        return "draw";
+
+    switch (true) {
+        case (playerSelection == computerSelection):
+            return "draw";
+        case (playerSelection == "Rock" && computerSelection == "Scissors"):
+            return "player wins";
+        case (playerSelection == "Rock" && computerSelection == "Paper"):
+            return "computer wins";
+        case (playerSelection == "Paper" && computerSelection == "Rock"):
+            return "player wins";
+        case (playerSelection == "Paper" && computerSelection == "Scissors"):
+            return "computer wins";
+        case (playerSelection == "Scissors" && computerSelection == "Paper"):
+            return "player wins";
+        case (playerSelection == "Scissors" && computerSelection == "Rock"):
+            return "computer wins";
+        default:
+            return "Error";
     }
-    else if (playerSelection == "Rock" && computerSelection == "Scissors"){
-        return "player wins";
-    }
-    else if (playerSelection == "Rock" && computerSelection == "Paper"){
-    return "computer wins";
-    }
-    else if (playerSelection == "Paper" && computerSelection == "Rock"){
-        return "player wins";
-    }
-    else if (playerSelection == "Paper" && computerSelection == "Scissors"){
-        return "computer wins";
-    }
-    else if (playerSelection == "Scissors" && computerSelection == "Paper"){
-        return "player wins!";
-    }
-    else if (playerSelection == "Scissors" && computerSelection == "Rock"){
-        return "computer wins";
-    }
-    else return "Error";
 }
