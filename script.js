@@ -1,5 +1,10 @@
-let playerScore = 0;
-let computerScore = 0;
+let playerScore = document.querySelector ('.pScore')
+let livePlayerScore = 0;
+playerScore.classList.add ('scores');
+
+let computerScore = document.querySelector ('.cScore')
+let liveComputerScore = 0;
+computerScore.classList.add ('scores');
 
 //function to obtain computers selection for the game
 function getComputerChoice () {
@@ -16,24 +21,29 @@ function getComputerChoice () {
 const rock = document.querySelector('.rock');
 rock.textContent = "Rock";
 rock.addEventListener ('click', () => {
-    console.log(playRound("Rock", getComputerChoice()));
+    const result = playRound("Rock", getComputerChoice());
+    displayOutcome(result);
+    ScoreUpdate(result);
 });
 
 const paper = document.querySelector('.paper');
 paper.textContent = "Paper";
 paper.addEventListener ('click', () => {
-    console.log(playRound("Paper", getComputerChoice()));
+    const result = playRound("Paper", getComputerChoice());
+    displayOutcome(result);
+    ScoreUpdate(result);
 });
 
 const scissors = document.querySelector('.scissors');
 scissors.textContent = "Scissors";
 scissors.addEventListener ('click', () => {
-    console.log(playRound("Scissors", getComputerChoice()));
+    const result = playRound("Scissors", getComputerChoice());
+    displayOutcome(result);
+    ScoreUpdate(result);
 });
 
 //function to run outcomes
-function playRound (playerSelection, getComputerChoice) { 
-    const computerSelection = getComputerChoice;
+function playRound (playerSelection, computerSelection) { 
     switch (true) {
         case (playerSelection == computerSelection):
             return "draw";
@@ -53,3 +63,41 @@ function playRound (playerSelection, getComputerChoice) {
             return "Error";
     }
 }
+
+const outcome = document.querySelector ('.outcome');
+
+function displayOutcome(result) {
+    if (result == "draw") {
+        const draw = document.createElement ('p');
+        draw.textContent = (`it's a draw!`);
+        draw.classList.add ('scores');
+        outcome.appendChild(draw)
+    }
+    else if (result == "player wins") {
+        const pWin = document.createElement ('p');
+        pWin.textContent = ("you win!");
+        pWin.classList.add ('scores');
+        outcome.appendChild(pWin)
+    }
+    else { 
+        const cWin = document.createElement ('p');
+        cWin.textContent = ("you lose!");
+        cWin.classList.add ('scores');
+        outcome.appendChild(cWin)
+    }
+}
+
+function ScoreUpdate (result) {
+    if (result == "draw") {
+        return;
+    }
+    else if (result == "player wins") {
+        livePlayerScore += 1;
+    }
+    else if (result == "computer wins")
+        liveComputerScore += 1;
+
+    playerScore.textContent = `${livePlayerScore}`;
+    computerScore.textContent = `${liveComputerScore}`;
+}
+

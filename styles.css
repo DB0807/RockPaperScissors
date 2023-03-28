@@ -107,3 +107,13 @@ border: 2px solid #480E98;
     height: 30px;
     font-size: 20px;
 }
+
+.scores {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 30px;
+    color: aliceblue;
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
