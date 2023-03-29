@@ -1,3 +1,4 @@
+//scores of the game
 let playerScore = document.querySelector ('.pScore')
 let livePlayerScore = 0;
 playerScore.classList.add ('scores');
@@ -17,7 +18,7 @@ function getComputerChoice () {
     }
     else return "Scissors";
 }
-
+//creates buttons for each player input
 const rock = document.querySelector('.rock');
 rock.textContent = "Rock";
 rock.addEventListener ('click', () => {
@@ -64,29 +65,28 @@ function playRound (playerSelection, computerSelection) {
     }
 }
 
+//displays the outcome of each round played
 const outcome = document.querySelector ('.outcome');
-
 function displayOutcome(result) {
+    const outcomes = ["draw", "pWin", "cWin"];
+    let outcomesIndex;
     if (result == "draw") {
-        const draw = document.createElement ('p');
-        draw.textContent = (`it's a draw!`);
-        draw.classList.add ('scores');
-        outcome.appendChild(draw)
+        draw = document.createElement ('p');
+         outcomesIndex = 0;
     }
     else if (result == "player wins") {
-        const pWin = document.createElement ('p');
-        pWin.textContent = ("you win!");
-        pWin.classList.add ('scores');
-        outcome.appendChild(pWin)
+         outcomesIndex = 1;
     }
     else { 
-        const cWin = document.createElement ('p');
-        cWin.textContent = ("you lose!");
-        cWin.classList.add ('scores');
-        outcome.appendChild(cWin)
+         outcomesIndex = 2;
     }
+
+    const outcomeDisplay = document.querySelector ('.outcome');
+    outcomeDisplay.textContent = (outcomes[outcomesIndex]);
+    outcomeDisplay.classList.add ('scores');
 }
 
+//updates and keeps track of the score
 function ScoreUpdate (result) {
     if (result == "draw") {
         return;
