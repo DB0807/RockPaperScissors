@@ -1,10 +1,39 @@
+const rockBtn = document.querySelector ('.rock');
+const paperBtn = document.querySelector ('.paper');
+const scissorsBtn = document.querySelector ('.scissors');
+
+rockBtn.addEventListener ('click', () => (
+    playerSelection = 'Rock',
+    computerSelection = getComputerChoice(),
+    console.log(playRound(playerSelection, computerSelection)),
+    console.log(playerSelection),
+    console.log(computerSelection)
+    )
+);
+
+paperBtn.addEventListener ('click', () => (
+    playerSelection = 'Paper',
+    computerSelection = getComputerChoice(),
+    console.log(playRound(playerSelection, computerSelection)),
+    console.log(playerSelection),
+    console.log(computerSelection)
+    )
+);
+
+scissorsBtn.addEventListener ('click', () => (
+    playerSelection = 'Scissors',
+    computerSelection = getComputerChoice(),
+    console.log(playRound(playerSelection, computerSelection)),
+    console.log(playerSelection),
+    console.log(computerSelection)
+    )
+);
+
 //scores of the game
-let playerScore = document.querySelector ('.pScore')
-let livePlayerScore = 0;
+const playerScore = document.querySelector ('.pScore')
 playerScore.classList.add ('scores');
 
-let computerScore = document.querySelector ('.cScore')
-let liveComputerScore = 0;
+const computerScore = document.querySelector ('.cScore')
 computerScore.classList.add ('scores');
 
 //function to obtain computers selection for the game
@@ -22,19 +51,19 @@ function getComputerChoice () {
 //function to run outcomes
 function playRound (playerSelection, computerSelection) { 
     switch (true) {
-        case (playerSelection == computerSelection):
+        case (playerSelection === computerSelection):
             return "draw";
-        case (playerSelection == "Rock" && computerSelection == "Scissors"):
+        case (playerSelection === "Rock" && computerSelection === "Scissors"):
             return "player wins";
-        case (playerSelection == "Rock" && computerSelection == "Paper"):
+        case (playerSelection === "Rock" && computerSelection === "Paper"):
             return "computer wins";
-        case (playerSelection == "Paper" && computerSelection == "Rock"):
+        case (playerSelection === "Paper" && computerSelection === "Rock"):
             return "player wins";
-        case (playerSelection == "Paper" && computerSelection == "Scissors"):
+        case (playerSelection === "Paper" && computerSelection === "Scissors"):
             return "computer wins";
-        case (playerSelection == "Scissors" && computerSelection == "Paper"):
+        case (playerSelection === "Scissors" && computerSelection === "Paper"):
             return "player wins";
-        case (playerSelection == "Scissors" && computerSelection == "Rock"):
+        case (playerSelection === "Scissors" && computerSelection === "Rock"):
             return "computer wins";
         default:
             return "Error";
