@@ -18,30 +18,6 @@ function getComputerChoice () {
     }
     else return "Scissors";
 }
-//creates buttons for each player input
-const rock = document.querySelector('.rock');
-rock.textContent = "Rock";
-rock.addEventListener ('click', () => {
-    const result = playRound("Rock", getComputerChoice());
-    displayOutcome(result);
-    ScoreUpdate(result);
-});
-
-const paper = document.querySelector('.paper');
-paper.textContent = "Paper";
-paper.addEventListener ('click', () => {
-    const result = playRound("Paper", getComputerChoice());
-    displayOutcome(result);
-    ScoreUpdate(result);
-});
-
-const scissors = document.querySelector('.scissors');
-scissors.textContent = "Scissors";
-scissors.addEventListener ('click', () => {
-    const result = playRound("Scissors", getComputerChoice());
-    displayOutcome(result);
-    ScoreUpdate(result);
-});
 
 //function to run outcomes
 function playRound (playerSelection, computerSelection) { 
@@ -64,40 +40,3 @@ function playRound (playerSelection, computerSelection) {
             return "Error";
     }
 }
-
-//displays the outcome of each round played
-const outcome = document.querySelector ('.outcome');
-function displayOutcome(result) {
-    const outcomes = ["draw", "pWin", "cWin"];
-    let outcomesIndex;
-    if (result == "draw") {
-        draw = document.createElement ('p');
-         outcomesIndex = 0;
-    }
-    else if (result == "player wins") {
-         outcomesIndex = 1;
-    }
-    else { 
-         outcomesIndex = 2;
-    }
-
-    const outcomeDisplay = document.querySelector ('.outcome');
-    outcomeDisplay.textContent = (outcomes[outcomesIndex]);
-    outcomeDisplay.classList.add ('scores');
-}
-
-//updates and keeps track of the score
-function ScoreUpdate (result) {
-    if (result == "draw") {
-        return;
-    }
-    else if (result == "player wins") {
-        livePlayerScore += 1;
-    }
-    else if (result == "computer wins")
-        liveComputerScore += 1;
-
-    playerScore.textContent = `${livePlayerScore}`;
-    computerScore.textContent = `${liveComputerScore}`;
-}
-
