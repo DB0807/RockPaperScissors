@@ -1,33 +1,13 @@
 const rockBtn = document.querySelector ('.rock');
 const paperBtn = document.querySelector ('.paper');
 const scissorsBtn = document.querySelector ('.scissors');
+let outcomeDiv = document.querySelector ('.outcome');
+let result;
 
-rockBtn.addEventListener ('click', () => (
-    playerSelection = 'Rock',
-    computerSelection = getComputerChoice(),
-    console.log(playRound(playerSelection, computerSelection)),
-    console.log(playerSelection),
-    console.log(computerSelection)
-    )
-);
-
-paperBtn.addEventListener ('click', () => (
-    playerSelection = 'Paper',
-    computerSelection = getComputerChoice(),
-    console.log(playRound(playerSelection, computerSelection)),
-    console.log(playerSelection),
-    console.log(computerSelection)
-    )
-);
-
-scissorsBtn.addEventListener ('click', () => (
-    playerSelection = 'Scissors',
-    computerSelection = getComputerChoice(),
-    console.log(playRound(playerSelection, computerSelection)),
-    console.log(playerSelection),
-    console.log(computerSelection)
-    )
-);
+//create outcome display
+const displayOutcome = document.createElement ('p')
+displayOutcome.classList.add('scores');
+outcomeDiv.appendChild(displayOutcome);
 
 //scores of the game
 const playerScore = document.querySelector ('.pScore')
@@ -68,4 +48,47 @@ function playRound (playerSelection, computerSelection) {
         default:
             return "Error";
     }
+};
+
+//buttons for each player selection to start a round
+rockBtn.addEventListener('click', () => (
+    playerSelection = 'Rock',
+    computerSelection = getComputerChoice(),
+    result = playRound(playerSelection, computerSelection),
+    console.log(playerSelection),
+    console.log(computerSelection),
+    outcome(result, playerSelection, computerSelection)
+));
+
+paperBtn.addEventListener('click', () => (
+    playerSelection = 'Paper',
+    computerSelection = getComputerChoice(),
+    result = playRound(playerSelection, computerSelection),
+    console.log(playerSelection),
+    console.log(computerSelection),
+    outcome(result, playerSelection, computerSelection)
+));
+
+scissorsBtn.addEventListener('click', () => (
+    playerSelection = 'Scissors',
+    computerSelection = getComputerChoice(),
+    result = playRound(playerSelection, computerSelection),
+    console.log(playerSelection),
+    console.log(computerSelection),
+    outcome(result, playerSelection, computerSelection)
+));
+
+let outcome = (result, playerSelection, computerSelection) => {
+    if (result === "draw") {
+        displayOutcome.textContent = (`You both chose ${playerSelection}, tie!`);
+    };
+    if (result === "player wins") {
+        displayOutcome.textContent = (`${playerSelection} beats ${computerSelection}, you win!`);
+    };
+    if (result === "computer wins") {
+        displayOutcome.textContent = (`${computerSelection} beats ${playerSelection}, you lose!`);
+    };
+    if (result === "draw") {
+        return 'oops';
+    };
 }
