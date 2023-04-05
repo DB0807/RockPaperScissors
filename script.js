@@ -10,11 +10,13 @@ displayOutcome.classList.add('scores');
 outcomeDiv.appendChild(displayOutcome);
 
 //scores of the game
-const playerScore = document.querySelector ('.pScore')
+let playerScore = document.querySelector ('.pScore')
 playerScore.classList.add ('scores');
+playerScore.textContent = parseInt('0');
 
-const computerScore = document.querySelector ('.cScore')
+let computerScore = document.querySelector ('.cScore')
 computerScore.classList.add ('scores');
+computerScore.textContent = parseInt('0');
 
 //function to obtain computers selection for the game
 function getComputerChoice () {
@@ -57,7 +59,7 @@ rockBtn.addEventListener('click', () => (
     result = playRound(playerSelection, computerSelection),
     console.log(playerSelection),
     console.log(computerSelection),
-    outcome(result, playerSelection, computerSelection)
+    outcome(result, playerSelection, computerSelection, playerScore, computerScore)
 ));
 
 paperBtn.addEventListener('click', () => (
@@ -66,7 +68,7 @@ paperBtn.addEventListener('click', () => (
     result = playRound(playerSelection, computerSelection),
     console.log(playerSelection),
     console.log(computerSelection),
-    outcome(result, playerSelection, computerSelection)
+    outcome(result, playerSelection, computerSelection, playerScore, computerScore)
 ));
 
 scissorsBtn.addEventListener('click', () => (
@@ -75,20 +77,27 @@ scissorsBtn.addEventListener('click', () => (
     result = playRound(playerSelection, computerSelection),
     console.log(playerSelection),
     console.log(computerSelection),
-    outcome(result, playerSelection, computerSelection)
+    outcome(result, playerSelection, computerSelection, playerScore, computerScore)
 ));
 
-let outcome = (result, playerSelection, computerSelection) => {
-    if (result === "draw") {
+//display choices and outcome of round
+let outcome = (result, playerSelection, computerSelection, playerScore, computerScore) => {
+    if (playerScore.textContent == '5') {
+        displayOutcome.textContent = (`You have won!`);
+    }
+    else if (computerScore.textContent == '5') {
+        displayOutcome.textContent = (`You have lost!`);
+    }
+    else if (result === "draw") {
         displayOutcome.textContent = (`You both chose ${playerSelection}, tie!`);
-    };
-    if (result === "player wins") {
+    }
+    else if (result === "player wins") {
+        playerScore.textContent = parseInt(playerScore.textContent) + 1;
         displayOutcome.textContent = (`${playerSelection} beats ${computerSelection}, you win!`);
-    };
-    if (result === "computer wins") {
+    }
+    else if (result === "computer wins") {
+        computerScore.textContent = parseInt(computerScore.textContent) + 1;
         displayOutcome.textContent = (`${computerSelection} beats ${playerSelection}, you lose!`);
-    };
-    if (result === "draw") {
-        return 'oops';
-    };
+    }
+    else  displayOutcome.textContent = ('oops');
 }
