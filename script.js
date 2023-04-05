@@ -75,7 +75,7 @@ scissorsBtn.addEventListener('click', () => (
 ));
 
 //display choices and outcome of round
-let outcome = (result, playerSelection, computerSelection, playerScore, computerScore) => {
+const outcome = (result, playerSelection, computerSelection, playerScore, computerScore) => {
     if (playerScore.textContent == '5') {
         displayOutcome.textContent = (`You have won!`);
     }
