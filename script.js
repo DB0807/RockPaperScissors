@@ -57,8 +57,6 @@ rockBtn.addEventListener('click', () => (
     playerSelection = 'Rock',
     computerSelection = getComputerChoice(),
     result = playRound(playerSelection, computerSelection),
-    console.log(playerSelection),
-    console.log(computerSelection),
     outcome(result, playerSelection, computerSelection, playerScore, computerScore)
 ));
 
@@ -66,8 +64,6 @@ paperBtn.addEventListener('click', () => (
     playerSelection = 'Paper',
     computerSelection = getComputerChoice(),
     result = playRound(playerSelection, computerSelection),
-    console.log(playerSelection),
-    console.log(computerSelection),
     outcome(result, playerSelection, computerSelection, playerScore, computerScore)
 ));
 
@@ -75,8 +71,6 @@ scissorsBtn.addEventListener('click', () => (
     playerSelection = 'Scissors',
     computerSelection = getComputerChoice(),
     result = playRound(playerSelection, computerSelection),
-    console.log(playerSelection),
-    console.log(computerSelection),
     outcome(result, playerSelection, computerSelection, playerScore, computerScore)
 ));
 
